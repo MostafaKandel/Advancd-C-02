@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36408.4 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advancd-C-02", "Advancd-C-02\Advancd-C-02.csproj", "{EFE727DE-9B8F-4424-81D8-A603D457A372}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFE727DE-9B8F-4424-81D8-A603D457A372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE727DE-9B8F-4424-81D8-A603D457A372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE727DE-9B8F-4424-81D8-A603D457A372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE727DE-9B8F-4424-81D8-A603D457A372}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E356570-AC96-48C5-93E3-186F25DA4BAD}
+	EndGlobalSection
+EndGlobal
