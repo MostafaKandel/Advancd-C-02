@@ -154,29 +154,59 @@ namespace Advancd_C_02
         #endregion
 
         #region Q9
-        public static List<int> CheckIntersection(int[] arr1, int[] arr2)
-        {
-            List<int> intersection = new List<int>();
-            Dictionary<int, int> dict = new Dictionary<int, int>();
+        //public static List<int> CheckIntersection(int[] arr1, int[] arr2)
+        //{
+        //    List<int> intersection = new List<int>();
+        //    Dictionary<int, int> dict = new Dictionary<int, int>();
 
-            foreach (int element in arr1)
+        //    foreach (int element in arr1)
+        //    {
+        //        if (dict.ContainsKey(element))
+        //            dict[element]++;
+        //        else
+        //            dict[element] = 1;
+        //    }
+        //    foreach (int item in arr2)
+        //    {
+        //        if (dict.ContainsKey(item) && dict[item] > 0)
+        //        {
+        //            intersection.Add(item);
+        //            dict[item]--; 
+        //        }
+        //    }
+
+        //    return intersection;
+        //}
+        #endregion
+
+        #region Q10
+        public static ArrayList CheckContiguous(ArrayList list, int targetSum)
+        {
+            ArrayList result = new ArrayList();
+
+            for (int i = 0; i < list.Count; i++)
             {
-                if (dict.ContainsKey(element))
-                    dict[element]++;
-                else
-                    dict[element] = 1;
-            }
-            foreach (int item in arr2)
-            {
-                if (dict.ContainsKey(item) && dict[item] > 0)
+                int currentSum = 0;
+
+                for (int j = i; j < list.Count; j++)
                 {
-                    intersection.Add(item);
-                    dict[item]--; 
+                    currentSum += (int)list[j];
+
+                    if (currentSum == targetSum)
+                    {
+                        for (int k = i; k <= j; k++)
+                        {
+                            result.Add(list[k]);
+                        }
+                        return result;
+                    }
                 }
             }
 
-            return intersection;
+            // If no sublist found, return empty list
+            return result;
         }
+
         #endregion
 
         #region Q11
@@ -307,12 +337,20 @@ namespace Advancd_C_02
             #endregion
 
             #region Q9
-            int[] arr1 = [1, 2, 3, 4, 4];
-            int[] arr2 = [10, 4, 4];
-            List<int> intersection = CheckIntersection(arr1, arr2);
-            foreach (int element in intersection) {
-                Console.WriteLine(element);
-            }
+            //int[] arr1 = [1, 2, 3, 4, 4];
+            //int[] arr2 = [10, 4, 4];
+            //List<int> intersection = CheckIntersection(arr1, arr2);
+            //foreach (int element in intersection) {
+            //    Console.WriteLine(element);
+            //}
+            #endregion
+
+            #region Q10
+            ArrayList list = new ArrayList() { 1, 2, 3, 7, 5 };
+            ArrayList result = CheckContiguous(list, 12);
+            foreach (var item in result) Console.WriteLine(item); //[2, 3, 7]
+            ArrayList result1 = CheckContiguous(list, 15);
+            foreach (var item in result1) Console.WriteLine(item); //[3,7,5]
             #endregion
 
             #region Q11
