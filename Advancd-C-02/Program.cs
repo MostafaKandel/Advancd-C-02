@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Advancd_C_02
 {
@@ -34,6 +35,27 @@ namespace Advancd_C_02
         //    }
         //}
         #endregion
+
+        #region Q11
+        // Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order 
+        public static void ReverseFirstKElements<T>(Queue<T> queue, int k)
+        {
+            if (k <= 0 || k > queue.Count) return;
+            Stack<T> tempStack = new Stack<T>();
+            for(int i = 0; i < k; i++)
+            {
+                tempStack.Push(queue.Dequeue());
+            }
+            while (tempStack.Count > 0)
+            {
+                queue.Enqueue(tempStack.Pop());
+            }
+            for (int i = 0; i < queue.Count-k; i++)
+            {
+                queue.Enqueue(queue.Dequeue());
+            }
+        }
+        #endregion
         static void Main(string[] args)
         {
 
@@ -59,24 +81,39 @@ namespace Advancd_C_02
             //}
             #endregion
 
-            #region 7
+            #region Q7
             //Implement a queue that can hold different data types. 
 
-            //1- non-generic approach
-            Queue queue = new Queue();
-            queue.Enqueue(1);
-            queue.Enqueue("Apple");
-            queue.Enqueue(5.28);
+            ////1- non-generic approach
+            //Queue queue = new Queue();
+            //queue.Enqueue(1);
+            //queue.Enqueue("Apple");
+            //queue.Enqueue(5.28);
 
+            //foreach (var item in queue) Console.WriteLine(item);
+
+
+            ////2- generic approach
+            //Queue<object> genericQueue = new Queue<object>();
+            //genericQueue.Enqueue(1);
+            //genericQueue.Enqueue("Apple");
+            //genericQueue.Enqueue(5.28);
+            //foreach (var item in genericQueue) Console.WriteLine(item);
+            #endregion
+
+            #region Q11
+            // Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order 
+           
+            Queue<int> queue = new Queue<int>();
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+            queue.Enqueue(6);
+            ReverseFirstKElements(queue, 3);
             foreach (var item in queue) Console.WriteLine(item);
 
-
-            //2- generic approach
-            Queue<object> genericQueue = new Queue<object>();
-            genericQueue.Enqueue(1);
-            genericQueue.Enqueue("Apple");
-            genericQueue.Enqueue(5.28);
-            foreach (var item in genericQueue) Console.WriteLine(item);
             #endregion
         }
     }
