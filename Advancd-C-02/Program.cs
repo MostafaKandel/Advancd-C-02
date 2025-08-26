@@ -121,35 +121,61 @@ namespace Advancd_C_02
         #endregion
 
         #region Q8
-        public static void SearchTargetInStack( int target)
+        //public static void SearchTargetInStack( int target)
+        //{
+        //    Stack<int> stack = new Stack<int>();
+        //    stack.Push(1);
+        //    stack.Push(2);
+        //    stack.Push(34);
+        //    stack.Push(42);
+        //    stack.Push(51);
+        //    stack.Push(60);
+        //    stack.Push(74);
+        //    stack.Push(82);
+
+        //    int count = 0;
+        //    bool found = false;
+        //    while (stack.Count > 0)
+        //    {
+
+        //            count++;
+        //            int current= stack.Pop();
+        //            if(current == target)
+        //            {
+        //                Console.WriteLine($"the target is found after {count} countes ");
+        //                found = true;
+        //                break;
+        //            }  
+
+        //    }
+        //    if (!found) Console.WriteLine("the target is not found");
+
+        //}
+        #endregion
+
+        #region Q9
+        public static List<int> CheckIntersection(int[] arr1, int[] arr2)
         {
-            Stack<int> stack = new Stack<int>();
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(34);
-            stack.Push(42);
-            stack.Push(51);
-            stack.Push(60);
-            stack.Push(74);
-            stack.Push(82);
+            List<int> intersection = new List<int>();
+            Dictionary<int, int> dict = new Dictionary<int, int>();
 
-            int count = 0;
-            bool found = false;
-            while (stack.Count > 0)
+            foreach (int element in arr1)
             {
-                 
-                    count++;
-                    int current= stack.Pop();
-                    if(current == target)
-                    {
-                        Console.WriteLine($"the target is found after {count} countes ");
-                        found = true;
-                        break;
-                    }  
-                
+                if (dict.ContainsKey(element))
+                    dict[element]++;
+                else
+                    dict[element] = 1;
             }
-            if (!found) Console.WriteLine("the target is not found");
+            foreach (int item in arr2)
+            {
+                if (dict.ContainsKey(item) && dict[item] > 0)
+                {
+                    intersection.Add(item);
+                    dict[item]--; 
+                }
+            }
 
+            return intersection;
         }
         #endregion
 
@@ -275,9 +301,18 @@ namespace Advancd_C_02
 
             #region Q8
 
-            SearchTargetInStack(42);
-            SearchTargetInStack(100);
+            //SearchTargetInStack(42); // 5
+            //SearchTargetInStack(100); // not found
 
+            #endregion
+
+            #region Q9
+            int[] arr1 = [1, 2, 3, 4, 4];
+            int[] arr2 = [10, 4, 4];
+            List<int> intersection = CheckIntersection(arr1, arr2);
+            foreach (int element in intersection) {
+                Console.WriteLine(element);
+            }
             #endregion
 
             #region Q11
