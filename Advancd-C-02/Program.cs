@@ -25,14 +25,34 @@ namespace Advancd_C_02
 
         #region Q2
         //Given a number N and an array of N numbers. Determine if it's palindrome or not.
-        public static bool CheckPalindrome(int[] arr, int n)
-        {
-            bool isPalindrome = true;
-            for (int i = 0; i < n / 2; i++) {
-                if (arr[i] != arr[n-1-i]) { isPalindrome = false; break; }
-            }
-            return isPalindrome;
+        //public static bool CheckPalindrome(int[] arr, int n)
+        //{
+        //    bool isPalindrome = true;
+        //    for (int i = 0; i < n / 2; i++) {
+        //        if (arr[i] != arr[n-1-i]) { isPalindrome = false; break; }
+        //    }
+        //    return isPalindrome;
 
+        //}
+        #endregion
+
+        #region Q3
+        // Given a Queue, implement a function to reverse the elements of a queue using a stack.
+        public static void ReverseQueue<T>(Queue<T> queue)
+        {
+            // Queue= 1, 2, 3, 4, 5
+            Stack<T> stack = new Stack<T>();
+
+            while (queue.Count > 0)
+            {
+                // stack= 1, 2,3, 4, 5
+                stack.Push(queue.Dequeue());
+            }
+            while (stack.Count > 0)
+            {
+                // Queue= 5, 4, 3, 2, 1
+                queue.Enqueue(stack.Pop());
+            }
         }
         #endregion
 
@@ -116,15 +136,26 @@ namespace Advancd_C_02
 
             #region Q2
 
-            Console.WriteLine("please enter the size of the array");
-            int sizeOfArray = int.Parse(Console.ReadLine());
-            Console.WriteLine("please enter the array");
-            int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
-            bool isPalindrome = CheckPalindrome(arr, sizeOfArray);
-            if (isPalindrome)
-                Console.WriteLine("The array is a palindrome");
-            else 
-                Console.WriteLine("The array is not a palindrome");
+            //Console.WriteLine("please enter the size of the array");
+            //int sizeOfArray = int.Parse(Console.ReadLine());
+            //Console.WriteLine("please enter the array");
+            //int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            //bool isPalindrome = CheckPalindrome(arr, sizeOfArray);
+            //if (isPalindrome)
+            //    Console.WriteLine("The array is a palindrome");
+            //else 
+            //    Console.WriteLine("The array is not a palindrome");
+            #endregion
+
+            #region Q3
+            Queue<int> queue = new Queue<int>(new int[] { 1, 2, 3, 4, 5 });
+            Console.WriteLine("before reverse");
+            foreach (var item in queue) Console.WriteLine(item);
+            ReverseQueue<int>(queue);
+            Console.WriteLine("after reverse");
+            foreach (var item in queue) Console.WriteLine(item);
+
+
             #endregion
 
             #region Q5
