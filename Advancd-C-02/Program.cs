@@ -38,22 +38,55 @@ namespace Advancd_C_02
 
         #region Q3
         // Given a Queue, implement a function to reverse the elements of a queue using a stack.
-        public static void ReverseQueue<T>(Queue<T> queue)
-        {
-            // Queue= 1, 2, 3, 4, 5
-            Stack<T> stack = new Stack<T>();
+        //public static void ReverseQueue<T>(Queue<T> queue)
+        //{
+        //    // Queue= 1, 2, 3, 4, 5
+        //    Stack<T> stack = new Stack<T>();
 
-            while (queue.Count > 0)
+        //    while (queue.Count > 0)
+        //    {
+        //        // stack= 1, 2,3, 4, 5
+        //        stack.Push(queue.Dequeue());
+        //    }
+        //    while (stack.Count > 0)
+        //    {
+        //        // Queue= 5, 4, 3, 2, 1
+        //        queue.Enqueue(stack.Pop());
+        //    }
+        //}
+        #endregion
+
+        #region Q4
+        //Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
+        public static bool IsBalanced(string input)
+        {
+            Stack<char> stack= new Stack<char>();
+            foreach (char ch in input)
             {
-                // stack= 1, 2,3, 4, 5
-                stack.Push(queue.Dequeue());
+                if (ch == '(' || ch == '{' || ch == '[')
+                {
+                    stack.Push(ch);
+                }
+                else if (ch == ')' || ch == '}' || ch == ']')
+                {
+                    if (stack.Count == 0) return false;
+                    else
+                    {
+                        // to check what is the top element in the stack and remove it or pop it from stack
+                        char top = stack.Pop();
+                        if ((ch == ')' && top != '(') ||
+                            (ch == '}' && top != '{') ||
+                            (ch == ']' && top != '['))
+                        
+                            return false;
+                    }
+                      
+                }
             }
-            while (stack.Count > 0)
-            {
-                // Queue= 5, 4, 3, 2, 1
-                queue.Enqueue(stack.Pop());
-            }
+            return stack.Count == 0; // if stack is empty, parentheses are balanced and it will returned true
+
         }
+
         #endregion
 
         #region Q5
@@ -148,14 +181,22 @@ namespace Advancd_C_02
             #endregion
 
             #region Q3
-            Queue<int> queue = new Queue<int>(new int[] { 1, 2, 3, 4, 5 });
-            Console.WriteLine("before reverse");
-            foreach (var item in queue) Console.WriteLine(item);
-            ReverseQueue<int>(queue);
-            Console.WriteLine("after reverse");
-            foreach (var item in queue) Console.WriteLine(item);
+            //Queue<int> queue = new Queue<int>(new int[] { 1, 2, 3, 4, 5 });
+            //Console.WriteLine("before reverse");
+            //foreach (var item in queue) Console.WriteLine(item);
+            //ReverseQueue<int>(queue);
+            //Console.WriteLine("after reverse");
+            //foreach (var item in queue) Console.WriteLine(item);
+            #endregion
 
+            #region Q4
 
+            string input1 = "[()]{}}";
+            Console.WriteLine(IsBalanced(input1)); //false
+            string input2 = "({[]})";
+            Console.WriteLine(IsBalanced(input2)); //true
+            string input3 = "(((])";
+            Console.WriteLine(IsBalanced(input3)); //false
             #endregion
 
             #region Q5
