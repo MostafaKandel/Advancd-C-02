@@ -5,6 +5,24 @@ namespace Advancd_C_02
 {
     internal class Program
     {
+        #region Q1
+        /*
+         *  Given an array  consists of  numbers with size N and number of queries, 
+         *  in each query you will be given an integer X, and you should print how many
+         *  numbers in array that is greater than  X.
+         */
+        public static int CountGreaterThanX(int[] arr, int x)
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > x) count++;
+
+            }
+            return count;
+        }
+        #endregion
+
         #region Q5
         //Given an array, implement a function to remove duplicate elements from an array.
         //public static List<T> RemoveDuplicate<T>(List<T> inputList)
@@ -38,27 +56,55 @@ namespace Advancd_C_02
 
         #region Q11
         // Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order 
-        public static void ReverseFirstKElements<T>(Queue<T> queue, int k)
-        {
-            if (k <= 0 || k > queue.Count) return;
-            Stack<T> tempStack = new Stack<T>();
-            for(int i = 0; i < k; i++)
-            {
-                tempStack.Push(queue.Dequeue());
-            }
-            while (tempStack.Count > 0)
-            {
-                queue.Enqueue(tempStack.Pop());
-            }
-            for (int i = 0; i < queue.Count-k; i++)
-            {
-                queue.Enqueue(queue.Dequeue());
-            }
-        }
+        //public static void ReverseFirstKElements<T>(Queue<T> queue, int k)
+        //{
+        //    if (k <= 0 || k > queue.Count) return;
+        //    Stack<T> tempStack = new Stack<T>();
+        //    for(int i = 0; i < k; i++)
+        //    {
+        //        tempStack.Push(queue.Dequeue());
+        //    }
+        //    while (tempStack.Count > 0)
+        //    {
+        //        queue.Enqueue(tempStack.Pop());
+        //    }
+        //    for (int i = 0; i < queue.Count-k; i++)
+        //    {
+        //        queue.Enqueue(queue.Dequeue());
+        //    }
+        //}
         #endregion
         static void Main(string[] args)
         {
+            #region Q1
+            /*
+             *  Given an array  consists of  numbers with size N and number of queries, 
+             *  in each query you will be given an integer X, and you should print how many
+             *  numbers in array that is greater than  X.
+             */
 
+            Console.WriteLine("enter the size and the number of queries");
+            string[] inputs = Console.ReadLine().Split();
+            int size = int.Parse(inputs[0]);
+            int noOfQuieries = int.Parse(inputs[1]);
+            Console.WriteLine("please enter the array");
+            int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+           
+
+            for (int i=1; i<=noOfQuieries;i++)
+            {
+                    Console.WriteLine("please enter target");
+                    int target = int.Parse(Console.ReadLine());
+
+                    int result = CountGreaterThanX(arr, target);
+                    Console.WriteLine(result);
+                }
+
+
+
+
+
+            #endregion
 
             #region Q5
             //List<int> inputList = new List<int>() { 1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9 };
@@ -103,16 +149,16 @@ namespace Advancd_C_02
 
             #region Q11
             // Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order 
-           
-            Queue<int> queue = new Queue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Enqueue(3);
-            queue.Enqueue(4);
-            queue.Enqueue(5);
-            queue.Enqueue(6);
-            ReverseFirstKElements(queue, 3);
-            foreach (var item in queue) Console.WriteLine(item);
+
+            //Queue<int> queue = new Queue<int>();
+            //queue.Enqueue(1);
+            //queue.Enqueue(2);
+            //queue.Enqueue(3);
+            //queue.Enqueue(4);
+            //queue.Enqueue(5);
+            //queue.Enqueue(6);
+            //ReverseFirstKElements(queue, 3);
+            //foreach (var item in queue) Console.WriteLine(item);
 
             #endregion
         }
