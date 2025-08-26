@@ -11,15 +11,28 @@ namespace Advancd_C_02
          *  in each query you will be given an integer X, and you should print how many
          *  numbers in array that is greater than  X.
          */
-        public static int CountGreaterThanX(int[] arr, int x)
-        {
-            int count = 0;
-            for (int i = 0; i < arr.Length; i++)
-            {
-                if (arr[i] > x) count++;
+        //public static int CountGreaterThanX(int[] arr, int x)
+        //{
+        //    int count = 0;
+        //    for (int i = 0; i < arr.Length; i++)
+        //    {
+        //        if (arr[i] > x) count++;
 
+        //    }
+        //    return count;
+        //}
+        #endregion
+
+        #region Q2
+        //Given a number N and an array of N numbers. Determine if it's palindrome or not.
+        public static bool CheckPalindrome(int[] arr, int n)
+        {
+            bool isPalindrome = true;
+            for (int i = 0; i < n / 2; i++) {
+                if (arr[i] != arr[n-1-i]) { isPalindrome = false; break; }
             }
-            return count;
+            return isPalindrome;
+
         }
         #endregion
 
@@ -83,27 +96,35 @@ namespace Advancd_C_02
              *  numbers in array that is greater than  X.
              */
 
-            Console.WriteLine("enter the size and the number of queries");
-            string[] inputs = Console.ReadLine().Split();
-            int size = int.Parse(inputs[0]);
-            int noOfQuieries = int.Parse(inputs[1]);
+            //Console.WriteLine("enter the size and the number of queries");
+            //string[] inputs = Console.ReadLine().Split();
+            //int size = int.Parse(inputs[0]);
+            //int noOfQuieries = int.Parse(inputs[1]);
+            //Console.WriteLine("please enter the array");
+            //int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
+
+
+            //for (int i=1; i<=noOfQuieries;i++)
+            //{
+            //        Console.WriteLine("please enter target");
+            //        int target = int.Parse(Console.ReadLine());
+
+            //        int result = CountGreaterThanX(arr, target);
+            //        Console.WriteLine(result);
+            //    }
+            #endregion
+
+            #region Q2
+
+            Console.WriteLine("please enter the size of the array");
+            int sizeOfArray = int.Parse(Console.ReadLine());
             Console.WriteLine("please enter the array");
             int[] arr = Console.ReadLine().Split().Select(int.Parse).ToArray();
-           
-
-            for (int i=1; i<=noOfQuieries;i++)
-            {
-                    Console.WriteLine("please enter target");
-                    int target = int.Parse(Console.ReadLine());
-
-                    int result = CountGreaterThanX(arr, target);
-                    Console.WriteLine(result);
-                }
-
-
-
-
-
+            bool isPalindrome = CheckPalindrome(arr, sizeOfArray);
+            if (isPalindrome)
+                Console.WriteLine("The array is a palindrome");
+            else 
+                Console.WriteLine("The array is not a palindrome");
             #endregion
 
             #region Q5
