@@ -58,34 +58,34 @@ namespace Advancd_C_02
 
         #region Q4
         //Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
-        public static bool IsBalanced(string input)
-        {
-            Stack<char> stack= new Stack<char>();
-            foreach (char ch in input)
-            {
-                if (ch == '(' || ch == '{' || ch == '[')
-                {
-                    stack.Push(ch);
-                }
-                else if (ch == ')' || ch == '}' || ch == ']')
-                {
-                    if (stack.Count == 0) return false;
-                    else
-                    {
-                        // to check what is the top element in the stack and remove it or pop it from stack
-                        char top = stack.Pop();
-                        if ((ch == ')' && top != '(') ||
-                            (ch == '}' && top != '{') ||
-                            (ch == ']' && top != '['))
-                        
-                            return false;
-                    }
-                      
-                }
-            }
-            return stack.Count == 0; // if stack is empty, parentheses are balanced and it will returned true
+        //public static bool IsBalanced(string input)
+        //{
+        //    Stack<char> stack= new Stack<char>();
+        //    foreach (char ch in input)
+        //    {
+        //        if (ch == '(' || ch == '{' || ch == '[')
+        //        {
+        //            stack.Push(ch);
+        //        }
+        //        else if (ch == ')' || ch == '}' || ch == ']')
+        //        {
+        //            if (stack.Count == 0) return false;
+        //            else
+        //            {
+        //                // to check what is the top element in the stack and remove it or pop it from stack
+        //                char top = stack.Pop();
+        //                if ((ch == ')' && top != '(') ||
+        //                    (ch == '}' && top != '{') ||
+        //                    (ch == ']' && top != '['))
 
-        }
+        //                    return false;
+        //            }
+
+        //        }
+        //    }
+        //    return stack.Count == 0; // if stack is empty, parentheses are balanced and it will returned true
+
+        //}
 
         #endregion
 
@@ -118,6 +118,39 @@ namespace Advancd_C_02
         //        }
         //    }
         //}
+        #endregion
+
+        #region Q8
+        public static void SearchTargetInStack( int target)
+        {
+            Stack<int> stack = new Stack<int>();
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(34);
+            stack.Push(42);
+            stack.Push(51);
+            stack.Push(60);
+            stack.Push(74);
+            stack.Push(82);
+
+            int count = 0;
+            bool found = false;
+            while (stack.Count > 0)
+            {
+                 
+                    count++;
+                    int current= stack.Pop();
+                    if(current == target)
+                    {
+                        Console.WriteLine($"the target is found after {count} countes ");
+                        found = true;
+                        break;
+                    }  
+                
+            }
+            if (!found) Console.WriteLine("the target is not found");
+
+        }
         #endregion
 
         #region Q11
@@ -191,12 +224,12 @@ namespace Advancd_C_02
 
             #region Q4
 
-            string input1 = "[()]{}}";
-            Console.WriteLine(IsBalanced(input1)); //false
-            string input2 = "({[]})";
-            Console.WriteLine(IsBalanced(input2)); //true
-            string input3 = "(((])";
-            Console.WriteLine(IsBalanced(input3)); //false
+            //string input1 = "[()]{}}";
+            //Console.WriteLine(IsBalanced(input1)); //false
+            //string input2 = "({[]})";
+            //Console.WriteLine(IsBalanced(input2)); //true
+            //string input3 = "(((])";
+            //Console.WriteLine(IsBalanced(input3)); //false
             #endregion
 
             #region Q5
@@ -238,6 +271,13 @@ namespace Advancd_C_02
             //genericQueue.Enqueue("Apple");
             //genericQueue.Enqueue(5.28);
             //foreach (var item in genericQueue) Console.WriteLine(item);
+            #endregion
+
+            #region Q8
+
+            SearchTargetInStack(42);
+            SearchTargetInStack(100);
+
             #endregion
 
             #region Q11
